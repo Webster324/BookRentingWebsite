@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="javascript/account.js"></script>
+    <script src="javascript/cart.js"></script>
+    <script src="javascript/book.js"></script>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        .form-signin {
+            max-width: 330px;
+            padding: 1rem;
+        }
+
+        .form-signin .form-floating:focus-within {
+            z-index: 2;
+        }
+
+        .form-signin input[type="email"] {
+            margin-bottom: -1px;
+            border-radius: 0;
+        }
+
+        .form-signin input[id="firstName"] {
+            margin-bottom: -1px;
+            border-radius: 0;
+        }
+
+        .form-signin input[id="lastName"] {
+            margin-bottom: -1px;
+            border-radius: 0;
+        }
+
+        .form-signin input[type="tel"] {
+            margin-bottom: -1px;
+            border-radius: 0;
+        }
+
+        .form-signin input[type="text"] {
+            margin-bottom: 0px;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .form-signin input[type="password"] {
+            margin-bottom: 0px;
+            border-radius: 0;
+        }
+
+        #confirm-password{
+            margin-bottom: 10px;
+            border-bottom-left-radius: var(--bs-border-radius);
+            border-bottom-right-radius: var(--bs-border-radius);
+            
+        }
+        @media screen and (max-width: 991px) {
+            .fixed-top + div{
+                margin-top: 160px;
+            }
+        }
+        @media screen and (max-width: 767px) {
+            .fixed-top + div{
+                margin-top: 180px;
+            }
+        }
+        @media screen and (max-width: 390px) {
+            .fixed-top + div{
+            margin-top: 220px;
+            }
+        }
+        @media screen and (max-width: 280px) {
+            .fixed-top + div{
+            margin-top: 460px;
+            }
+        }
+    </style>
+</head>
+<body class="d-flex">
+    <div class="form-signin w-100 m-auto">
+        <h1>Register</h1>
+        <form id="register-form" onsubmit="event.preventDefault(); formHandler()">
+            <div class="form-floating">
+                <input type="text" class="form-control" id="username" placeholder="username" name="username" required>
+                <label for="username">Username</label>
+            </div>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="firstName" placeholder="firstName" name="firstName" required>
+                <label for="firstNmae">First Name</label>
+            </div>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="lastName" placeholder="lastName" name="lastName" required>
+                <label for="lastName">Last Name</label>
+            </div>
+            <div class="form-floating">
+                <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email" required>
+                <label for="email">Email</label>
+            </div>
+            <div class="form-floating">
+                <input type="tel" class="form-control" id="phoneNo" placeholder="phoneNo" name="phoneNo" minlength="10" maxlength="11" required>
+                <label for="phoneNo">Phone Number</label>
+                <div class="invalid-feedback">
+                    Your phone number is invalid.
+                </div>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="password" placeholder="password" name="password" required>
+                <label for="password">Password</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="confirm-password" placeholder="confirm-password" name="confirm-password" minlength="6" required>
+                <label for="confirm-password">Confirm Password</label>
+            </div>
+            <button class="btn btn-primary w-100 py-2" type="submit">Register</button>
+            <div id="error-message" style="color: red;"></div>
+        </form>
+        <p>Already have an account? <a href="login.html">Login here</a></p>
+    </div>
+    <script src="javascript/account.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script>
+        
+        function formHandler(){
+            var username = document.getElementById("username");
+            var firstName = document.getElementById("firstName");
+            var lastName = document.getElementById("lastName");
+            var email = document.getElementById("email");
+            var phoneNoElem = document.getElementById("phoneNo");
+            var password = document.getElementById("password");
+            var confirmPassword = document.getElementById("confirm-password");
+
+            phoneNo = parseInt(phoneNoElem.value);
+            if (!phoneNo){     
+                phoneNoElem.classList.add("is-invalid");
+                return false;
+            }
+
+            if(password.value != confirmPassword.value){
+                document.getElementById("error-message").innerText = "Password are not match. Please try again.";
+            }else{
+                signup(username.value, password.value, email.value, firstName.value, lastName.value, phoneNo);
+                window.location.href = "login.html";
+            }
+        }
+    </script>
+</body>
+</html>

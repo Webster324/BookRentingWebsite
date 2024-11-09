@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <title>Category</title>
+        <link type="text/css" rel="stylesheet" href="style.css"/>
+        <meta  name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="your-integrity-hash" crossorigin="anonymous" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">    
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="javascript/account.js"></script>
+        <script src="javascript/cart.js"></script>
+        <script src="javascript/book.js"></script>
+        <script>
+            //Get Query parameter
+            const queryParameter = new URLSearchParams(window.location.search);
+            var category = queryParameter.get('cat');
+            if (category == null){
+                document.write("An error occured.");
+            }
+        </script>
+    </head>
+    <style>
+      .fixed-top + div{
+          margin-top: 80px;
+      }
+      @media screen and (max-width: 991px) {
+        .fixed-top + div{
+          margin-top: 160px;
+        }
+      }
+      @media screen and (max-width: 767px) {
+        .fixed-top + div{
+          margin-top: 180px;
+        }
+        .dropdown-menu{
+          flex-direction: column;
+        }
+      }
+      @media screen and (max-width: 390px) {
+        .fixed-top + div{
+          margin-top: 220px;
+        }
+      }
+      @media screen and (max-width: 280px) {
+        .fixed-top + div{
+          margin-top: 460px;
+        }
+      }
+      .dropdown-menu{
+        border-radius: 5;
+        padding: 0.5em;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+      }
+      .dropdown-menu ul{
+        list-style: none;
+        padding: 0;
+      }
+      .dropdown-menu.show{
+        display: flex;
+      }
+      .dropdown-menu li:first-child a{
+        font-weight: bold;
+        font-size: 1.2em;
+      }
+      .dropdown-menu li a{
+        padding: .5em 1em;
+      }
+    </style>
+    <script src="javascript/account.js"></script>
+    <script>
+      checkLogin()
+    </script>
+    <body>
+      <header class="p-3 fixed-top text-bg-dark">
+        <div class="container">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+              <img src="https://logo.com/image-cdn/images/kts928pd/production/eab0b136f969e70da490e3090873a14068b11059-355x357.png?w=1080&q=72" alt="mdo" width="32" height="32" class="rounded-circle">
+            </a>
+            
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+              <li><a href="index.html" class="nav-link px-2 text-white">Home</a></li>
+              <li class="dropdown">
+                <a href="genre.html" class="nav-link px-2 text-white dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
+                <div class="dropdown-menu">
+                  <ul>
+                    <li><a class="dropdown-item" style="cursor: default;">Friction</a></li>
+                    <li><a class="dropdown-item" href="category.html?cat=mystery">Mystery</a></li>
+                    <li><a class="dropdown-item" href="category.html?cat=adventure">Adventure</a></li>
+                    <li><a class="dropdown-item" href="category.html?cat=fantasy">Fantasy</a></li>
+                    <li><a class="dropdown-item" href="category.html?cat=romance">Romance</a></li>
+                  </ul>
+                  <ul>
+                    <li><a class="dropdown-item" style="cursor: default;">Academic</a></li>
+                    <li><a class="dropdown-item" href="category.html?cat=mathematic">Mathematics</a></li>
+                    <li><a class="dropdown-item" href="category.html?cat=science">Sciences (Physics, Chemistry, Biology)</a></li>
+                    <li><a class="dropdown-item" href="category.html?cat=cs">Computer Science</a></li>
+                    <li><a class="dropdown-item" href="category.html?cat=engineering">Engineering</a></li>
+                  </ul>
+                  <ul>
+                    <li><a class="dropdown-item" style="cursor: default;">Others</a></li>
+                    <li><a class="dropdown-item" href="category.html?cat=business">Business/Entrepreneurship</a></li>
+                    <li><a class="dropdown-item" href="category.html?cat=psychology">Psychology</a></li>
+                    <li><a class="dropdown-item" href="category.html?cat=history">History</a></li>
+                    <li><a class="dropdown-item" href="category.html?cat=philosophy">Philosophy</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li><a href="FindOurStore.html" class="nav-link px-2 text-white">Find Our Store</a></li>
+              <li><a href="AboutUs.html" class="nav-link px-2 text-white">About Us</a></li>
+            </ul>
+    
+            <div class="dropdown text-end">
+              <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a class="nav-link px-2 text-white" href="Profile.html">Profile</a></li>
+                <li><a class="nav-link px-2 text-white" href="MyCart.html">My Cart</a></li>
+                <li><a class="nav-link px-2 text-white" style="cursor: pointer;" onclick="loggingout()">Sign out</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+          <h1>
+            <script>
+              document.write(category.toUpperCase());
+            </script>
+          </h1>
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="book-list">
+
+        </div>
+      </div> 
+      <script>getBooks(category);</script>
+            
+      <footer style="padding: 14px;">
+        <div class="container">
+          <h5 id="left">About Ozzy Book Store</h5>
+          <p id="left">Welcome to Ozzy Book Store
+            At Ozzy Book Store, we believe in making reading accessible, affordable, and sustainable. 
+            Our store offers you the opportunity to explore a vast collection of books without the commitment of purchasing. 
+            Whether you're a student looking for textbooks, an avid reader eager to delve into new novels, or a researcher seeking reference materials, we've got you covered.
+            <br><br>
+            Experience the Joy of Reading with Ozzy Book Store
+            Whether you're a student, a professional, or simply someone who loves to read, Ozzy Book Store is your gateway to a world of knowledge, imagination, and inspiration. 
+            Embrace the convenience, affordability, and sustainability of renting books and embark on your next reading journey with us.
+            Join us today and let the pages of our books transport you to new realms of understanding and enjoyment.
+          </p >
+            
+          <h5 id="left">Return and refund policy</h5>
+          <p id="left">
+              You're eligible for a refund within 10 days if you're dissatisfied with your rental due to an error on the seller's part or if the book doesn't arrive.
+          </p >
+          <hr>
+          <h4 id="left">Types of Refunds</h4>
+          <h5 id="left">Incorrect Book/Not as Described/Damaged</h5>
+          <p id="left">
+            You're eligible for a full refund of the rental price, including original shipping costs, if your return is the result of an error on the seller's part. 
+            If you receive the incorrect book or if it arrives damaged, you'll also be refunded return shipping equal to the original charge. 
+            To receive a refund, you must return your book directly to the seller within 10 days of the estimated delivery date and in the same condition you received it in.
+            For books returned as 'Not as described,' return shipping amounts are refunded at the seller's discretion. 
+            If the seller disagrees, only the book price and original shipping will be refunded. 
+            We will not refund shipping amounts on behalf of a seller in the event of a dispute.
+          </p >
+            
+          <h5 id="left">Book Did Not Arrive</h5>
+          <p id="left">
+            You're eligible for a full refund of the rental price, including shipping costs, if your book hasn't arrived as of the Estimated Delivery Date, up until 5 days past. 
+            If the seller provides tracking information indicating the book has arrived, the refund request is void. 
+            A refund request for the reason 'item did not arrive' will automatically complete 7 days after the refund request is initiated through your account.
+            In cases where the book is returned to the seller for any of the following reasons, the refund includes the book price only: incomplete address, unclaimed, returned to reader, or similar.
+          </p >
+          <h5 id="left">Return Books</h5>
+          <p id="left">
+            Our books are tagged with an unique ID before we ship out to borrower.
+            To return the book, borrower only require to send the books by parcel to the our store, the address of our store can be found in <a href="FindOurStore.html">Find Our Store</a>
+            Once we received the book, we will return the deposit within 3 business days.
+            The deposit will not be returned if late returning or damage on books.
+          </p >  
+          <hr>
+            <div>
+              <a class="btn btn-primary" style="background-color: #3b5998;" href="https://www.facebook.com/17hieng/" role="button">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a class="btn btn-primary" style="background-color: #ac2bac;" href="https://www.instagram.com/cheehieng_/" role="button">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a class="btn btn-primary" style="background-color: #ed302f;" href="https://www.youtube.com/channel/UCFhHM9J7EW5TI7RFP1Rd-Cg" role="button">
+                <i class="fab fa-youtube"></i>
+              </a>
+              <a class="btn btn-primary" style="background-color: #333333;" href="https://github.com/17hieng" role="button">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          <p>&copy; 2023 Ozzy Book Store. All rights reserved.</p >
+        </div>
+      </footer>
+
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+      <script>
+        function loggingout(){
+          logout()
+          window.location.href = "login.html";
+        }
+      </script>
+
+    </div>
+  </body>
+</html>
